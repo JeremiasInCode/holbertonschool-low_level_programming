@@ -22,14 +22,15 @@ char *argstostr(int ac, char **av)
 	for (; av[countAv]; countAv++)
 		;
 
-	ptr = (char *)malloc(ac + 1 + countAv + 1);
+	ptr = (char *)malloc(ac + countAv + 1);
 	if (!(ptr))
 		return (NULL);
 	for (; iterator <= countAv; iterator++)
 	{
 		if (av[iterator])
 		{
-			printf("%s\n", av[iterator]);
+			printf("%s", av[iterator]);
+			putchar('\n');
 		}
 	}
 	ptr[iterator] = '\0';
