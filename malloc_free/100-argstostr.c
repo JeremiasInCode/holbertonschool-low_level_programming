@@ -1,5 +1,15 @@
 #include "main.h"
 
+/**
+ * argstostr - Reserv space for concatenate all the argumennts of your program.
+ *
+ * @ac: First param (argc) - called ac.
+ * @av: Second param (argv) - called av.
+ * Return: Char.
+ *
+ * Author: Jeremias Erba.
+ */
+
 char *argstostr(int ac, char **av)
 {
 	int iterator = 0;
@@ -12,7 +22,7 @@ char *argstostr(int ac, char **av)
 	for (; av[countAv]; countAv++)
 		;
 
-	ptr = (char *)malloc(ac + countAv);
+	ptr = (char *)malloc(ac + countAv + 1);
 	if (!(ptr))
 		return (NULL);
 	for (; iterator <= countAv; iterator++)
@@ -22,5 +32,6 @@ char *argstostr(int ac, char **av)
 			printf("%s\n", av[iterator]);
 		}
 	}
+	ptr[iterator] = '\0';
 	return (ptr);
 }
