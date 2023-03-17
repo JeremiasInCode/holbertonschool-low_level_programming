@@ -14,7 +14,6 @@
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int iteratorPtr = 0;
 	char *NewOldPtr = NULL;
 
 	NewOldPtr = (char *)malloc(old_size * new_size);
