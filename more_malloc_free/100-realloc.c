@@ -16,43 +16,36 @@
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	unsigned int i;
-	char *NewPtr = NULL;
-	char *NewOldPtr = (char *)ptr;
+	void *Newptr = NULL;
 
-	/* Conditions in order */
+	/* Conditions in one line */
+	if (new_size  == old_size)
+		return (ptr);
+
+	if (ptr == NULL)
+		return (malloc(new_size));
+
+	if (new_size > old_size)
+		free(ptr);
+
 	if (new_size == old_size)
 		return (ptr);
 
-	if (new_size > old_size)
-	{
-		free(ptr);
-		ptr = malloc(new_size);
-		return (ptr);
-	}
-	if (new_size < old_size)
-		old_size = new_size;
+	/**
+	* If none of the conditions are met,
+	* We allocated memory for void pointer with the new_size
+	* that effectively is the new size for the new pointer :)
+	*/
 
-	NewPtr = malloc(old_size);
-	if (NewPtr == NULL)
-		return (NULL);
-	if (ptr == NULL)
-	{
-		free(ptr);
-		ptr = malloc(new_size);
-		return (ptr);
-	}
+	Newptr = malloc(new_size);
+
+	/* Conditions in more of one line*/
 	if (new_size == 0 && ptr != NULL)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	if (new_size == 0)
-	{
-		free(ptr);
-		return (NULL);
-	}
-	for (i = 0; i < old_size; i++)
-		NewOldPtr[i] = NewPtr[i];
-	free(ptr);
-	return (NewOldPtr);
+
+	for (i = 0; i < new_size && i < old_size; i++)
+		(char *)Newptr[i] = (char *)ptr[i];
 }
