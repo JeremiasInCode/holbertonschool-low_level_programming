@@ -1,0 +1,26 @@
+#include "main.h"
+
+/**
+ * strtow - Split a string into words.
+ *
+ * @str: Char pointer.
+ * Return: Char.
+ *
+ * Author: Jeremias Erba.
+ */
+
+char **strtow(char *str)
+{
+	int iteratorStr = 0, secondIterator = 0;
+	char *ptro = NULL;
+	char newString;
+
+	for (; str[iteratorStr]; iteratorStr++)
+		;
+
+	ptro = (char *)malloc(sizeof(char) * iteratorStr);
+	for (; secondIterator <= iteratorStr; secondIterator++)
+	{
+		printf("e\n");
+	}
+}
