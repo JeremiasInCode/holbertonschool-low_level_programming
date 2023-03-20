@@ -1,6 +1,13 @@
 #ifndef _dog_h_
 #define _dog_h_
 
+/**
+ * struct dog - Save the params.
+ * @name: First member.
+ * @age: Second member.
+ * @owner: Third member.
+ */
+
 struct dog
 {
 	char *name;
