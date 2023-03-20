@@ -14,6 +14,9 @@ char *_strdup(char *str);
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	if (name == NULL && owner == NULL)
+		return (NULL);
+
 	dog_t *copy = NULL;
 
 	copy = malloc(sizeof(dog_t));
@@ -50,15 +53,15 @@ char *_strdup(char *str)
 
 	if (str != NULL)
 	{
-		for (cantStr = 0; str[cantStr]; cantStr++)
+		for (cantStr = 0; str[cantStr] != '\0'; cantStr++)
 			;
-		spaceArray = malloc(cantStr + 1);
-
+		spaceArray = (char *)malloc(sizeof(char) * cantStr + 1);
 		if (spaceArray == NULL)
 			return (NULL);
 
 		for (i = 0; i < cantStr; i++)
 			spaceArray[i] = str[i];
 	}
+	spaceArray[i] = '\0';
 	return (spaceArray);
 }
