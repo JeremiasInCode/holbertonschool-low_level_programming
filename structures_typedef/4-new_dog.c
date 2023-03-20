@@ -28,7 +28,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		copy->owner = _strdup(owner);
 		if (copy->owner == NULL)
 		{
-			free(copy->owner);
+			free(copy->name);
 			free(copy);
 			return (NULL);
 		}
@@ -53,7 +53,7 @@ char *_strdup(char *str)
 		for (cantStr = 0; str[cantStr]; cantStr++)
 			;
 		spaceArray = malloc(cantStr + 1);
-		
+
 		if (spaceArray == NULL)
 			return (NULL);
 
