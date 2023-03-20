@@ -1,6 +1,43 @@
 #include "dog.h"
 #include <stdlib.h>
-char *_strdup(char *str);
+
+/**
+ * _strlen - Calculate the lenght of the char.
+ * @s: First param.
+ * Return: int.
+ */
+
+int _strlen(char *s)
+{
+	int len = 0;
+
+	while (*s)
+	{
+		len++;
+		s = s + 1;
+	}
+	return (len);
+}
+
+/**
+ * _strcpy - Copy src in dest.
+ *
+ * @dest: First param.
+ * @src: Second param.
+ *
+ * Return: char.
+ */
+
+char *_strcpy(char *dest, char *src)
+{
+	int iterator = 0;
+
+	for (; src[iterator] != '\0'; iterator++)
+		dest[iterator] = src[iterator];
+
+	dest[iterator] = '\0';
+	return (dest);
+}
 
 /**
  * new_dog - Create a new dog.
@@ -14,54 +51,33 @@ char *_strdup(char *str);
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	if (name == NULL && owner == NULL)
-		return (NULL);
-
 	dog_t *copy = NULL;
 
 	copy = malloc(sizeof(dog_t));
-	if (copy != NULL)
+	if (copy == NULL)
 	{
-		copy->name = _strdup(name);
-		if (copy->name == NULL)
-		{
-			free(copy);
-			return (NULL);
-		}
-		copy->owner = _strdup(owner);
-		if (copy->owner == NULL)
-		{
-			free(copy->name);
-			free(copy);
-			return (NULL);
-		}
-		copy->age = age;
+		free(copy);
+		return (NULL);
 	}
+
+	copy->name = (char *)malloc(sizeof(char) * _strlen(name) + 1);
+
+	if (copy->name == NULL)
+	{
+		free(copy);
+		return (NULL);
+	}
+
+	copy->owner = (char *)malloc(sizeof(char) * _strlen(owner) + 1);
+	if (copy->owner == NULL)
+	{
+		free(copy->name);
+		free(copy);
+		return (NULL);
+	}
+	_strcpy(copy->name, name);
+	copy->age = age;
+	_strcpy(copy->owner, owner);
 	return (copy);
 }
 
-/**
- * _strdup - Function that copy a string in other.
- * @str: char for to copy.
- * Return: char.
- */
-
-char *_strdup(char *str)
-{
-	int cantStr, i;
-	char *spaceArray = NULL;
-
-	if (str != NULL)
-	{
-		for (cantStr = 0; str[cantStr] != '\0'; cantStr++)
-			;
-		spaceArray = (char *)malloc(sizeof(char) * cantStr + 1);
-		if (spaceArray == NULL)
-			return (NULL);
-
-		for (i = 0; i < cantStr; i++)
-			spaceArray[i] = str[i];
-	}
-	spaceArray[i] = '\0';
-	return (spaceArray);
-}
