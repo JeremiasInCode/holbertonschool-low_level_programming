@@ -1,7 +1,5 @@
 #include "dog.h"
-#include <stdio.h>
 #include <stdlib.h>
-
 char *_strdup(char *str);
 
 /**
@@ -19,10 +17,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *copy = NULL;
 
 	copy = malloc(sizeof(dog_t));
-	if (!(copy))
-		return (NULL);
-
-	if (name != NULL && owner != NULL)
+	if (copy != NULL)
 	{
 		copy->name = _strdup(name);
 		if (copy->name == NULL)
@@ -40,7 +35,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 		copy->age = age;
 	}
 	return (copy);
-	free(copy);
 }
 
 /**
@@ -59,8 +53,10 @@ char *_strdup(char *str)
 		for (cantStr = 0; str[cantStr]; cantStr++)
 			;
 		spaceArray = malloc(cantStr + 1);
+		
 		if (spaceArray == NULL)
 			return (NULL);
+
 		for (i = 0; i < cantStr; i++)
 			spaceArray[i] = str[i];
 	}
