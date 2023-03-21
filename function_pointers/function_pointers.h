@@ -12,4 +12,7 @@ void array_iterator(int *array, size_t size, void (*action)(int));
 /* -- Task 2 -- */
 int int_index(int *array, int size, int (*cmp)(int));
 
+/* -- Task 3 -- */
+int (*get_op_func(char *s))(int, int);
+
 #endif
