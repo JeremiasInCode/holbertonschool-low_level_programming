@@ -16,7 +16,7 @@ void array_iterator(int *array, size_t size, void (*action)(int))
 {
 	unsigned int i = 0, socket;
 
-	if (!(action))
+	if ((!(action)) || (!(array)))
 		exit(1);
 
 	for (; i < size; i++)
