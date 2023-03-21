@@ -17,8 +17,7 @@ void print_name(char *name, void (*f)(char *))
 	 *
 	 * 1) A param char, it is the first param.
 	 * 2) The function to be executed.
-	 *
-	 * This function receives a pointer to the first byte of code of the
+	 * This function receives a direction memory to the first byte of code of the
 	 * function that we pass it.
 	 */
 
