@@ -39,8 +39,8 @@ function_string(va_list params)
 	char *string = NULL;
 
 	string = va_arg(params, char *);
-	if (!(string))
-		printf("(nil)");
+	if (!string)
+		string = "(nil)";
 	printf("%s", string);
 	return (0);
 }
@@ -66,7 +66,7 @@ print_all(const char * const format, ...)
 
 	while (format && format[i])
 	{
-		/* I search from the beginning of the array in each iteration. (j = 0) */
+		/*I search from the beginning of the array in each iteration. (j = 0)*/
 		j = 0;
 		while (options[j].option)
 		{
