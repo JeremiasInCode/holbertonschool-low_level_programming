@@ -45,12 +45,11 @@ function_string(va_list params)
 	return (0);
 }
 
-
 void
 print_all(const char * const format, ...)
 {
 	va_list list;
-	int i = 0, j = 0;
+	int iteratorF = 0, iteratorO = 0;
 	int (*callback)(va_list);
 	char *separator1 = "";
 	char *separator2 = ", ";
@@ -64,22 +63,22 @@ print_all(const char * const format, ...)
 
 	va_start(list, format);
 
-	while (format && format[i])
+	while (format && format[iteratorF])
 	{
 		/*I search from the beginning of the array in each iteration. (j = 0)*/
-		j = 0;
-		while (options[j].option)
+		iteratorO = 0;
+		while (options[iteratorO].option)
 		{
-			if (format[i] == options[j].option)
+			if (format[iteratorF] == options[iteratorO].option)
 			{
 				printf("%s", separator1);
-				callback = options[j].function;
+				callback = options[iteratorO].function;
 				callback(list);
 				separator1 = separator2;
 			}
-			j++;
+			iteratorO++;
 		}
-		i++;
+		iteratorF++;
 	}
 	putchar('\n');
 	va_end(list);
