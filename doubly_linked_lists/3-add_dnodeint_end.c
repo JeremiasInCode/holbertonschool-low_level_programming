@@ -1,12 +1,12 @@
 #include "lists.h"
 
 /**
- * add_dnodeint_end - Add node at the end.
+ * add_dnodeint_end - Add a node at the end.
  *
- * @head: Pointer to first node.
+ * @head: Pointer to the first node.
  * @n: number to print.
  *
- * Return: The addres of the new element.
+ * Return: Addres of the new node.
  */
 
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
@@ -20,18 +20,20 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 
 	newNode->n = n;
 
-	if (!current)
+	if (current)
 	{
-		*current = newNode;
+		while (current->next)
+			current = current->next;
+		newNode->prev = current;
+		current->next = newNode;
+	}
+	else
+	{
+		*head = newNode;
 		newNode->prev = NULL;
 	}
 
-	while (current->next)
-		current = current->next;
-
-	newNode->prev = current;
-	current->next = newNode;
 	newNode->next = NULL;
 
-	return (current->next);
+	return (newNode);
 }
