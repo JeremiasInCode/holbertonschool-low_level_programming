@@ -1,23 +1,18 @@
 #include "lists.h"
 
 /**
- * free_list - free a list.
+ * free_list - Freez a list.
  *
- * @head: pointer to the node.
+ * @head: pointer to the first node.
  *
  * Return: void.
  */
 
 void free_list(list_t *head)
 {
-	while (head)
+	if (head)
 	{
-		/*Llamada recursiva para que free de el ultimo hacia el primero*/
 		free_list(head->next);
-		if (head->str)
-		{
-			free(head->str);
-		}
-		free(head);
+		(head->str) ? free(head->str) : free(head);
 	}
 }
