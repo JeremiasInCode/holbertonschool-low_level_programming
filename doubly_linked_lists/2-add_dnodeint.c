@@ -1,5 +1,14 @@
 #include "lists.h"
 
+/**
+ * add_dnodeint - Add a new node interconnected.
+ *
+ * @head: Point to the first node.
+ * @n: parameter to print.
+ *
+ * Return: Direction of the new element.
+ */
+
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
 	dlistint_t *newNode = NULL;
