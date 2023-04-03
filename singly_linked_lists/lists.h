@@ -1,5 +1,5 @@
-#ifndef _main_h_
-#define _main_h_
+#ifndef _lists_h_
+#define _lists_h_
 #include <stdio.h>
 #include <stdlib.h>
 /**
@@ -34,3 +34,5 @@ list_t *add_node_end(list_t **head, const char *str);
 
 /* -- Task 4 -- */
 void free_list(list_t *head);
+
+#endif
