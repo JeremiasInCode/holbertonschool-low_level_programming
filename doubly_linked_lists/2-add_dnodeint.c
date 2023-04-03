@@ -11,7 +11,16 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 		return (NULL);
 	}
 	newNode->n = n;
+	newNode->prev = NULL;
 	newNode->next = *head;
+
+	/*Hay que enlazar la lista en el prev.*/
+	if (*head)
+		(*head)->prev = newNode;
+	/**
+	 * Luego de tener el newNode detras del head,
+	 * el head tiene que apuntar a newNode que esta detras.
+	 **/
 	*head = newNode;
-	return (*head);
+	return (newNode);
 }
