@@ -1,5 +1,5 @@
 #include "lists.h"
-#include "2-get_dnodeint.c"
+#include "5-get_dnodeint.c"
 
 /**
  * insert_dnodeint_at_index - Insert a new node with idx and the value n.
@@ -30,6 +30,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	/* Creamos el nodo en esa posicion*/
 	newNode = add_dnodeint(&(aux->next), n);
 	newNode->prev = aux;
-	aux->next = newNode;
+
 	return (aux->next);
 }
