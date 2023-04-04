@@ -30,6 +30,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	/* Creamos el nodo en esa posicion*/
 	newNode = add_dnodeint(&(aux->next), n);
 	newNode->prev = aux;
-
+	aux->next = newNode;
 	return (aux->next);
 }
