@@ -11,7 +11,7 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-	if (!index || !n)
+	if (index > 63 || !n)
 		return (-1);
 
 	/* We move the bits of n index times */
