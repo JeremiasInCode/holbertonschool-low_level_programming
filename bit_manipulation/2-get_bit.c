@@ -12,7 +12,7 @@
 int get_bit(unsigned long int n, unsigned int index)
 {
 	if (!index || !n)
-		return (0);
+		return (-1);
 
 	/* We move the bits of n index times */
 	n = n >> index;
