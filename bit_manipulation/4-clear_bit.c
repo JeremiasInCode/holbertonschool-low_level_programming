@@ -18,6 +18,6 @@ int clear_bit(unsigned long int *n, unsigned int index)
 
 	aux = aux << index;
 	aux = ~aux;
-	(*n) = (*n) | aux;
+	(*n) = (*n) & aux;
 	return (1);
 }
