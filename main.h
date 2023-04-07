@@ -1,28 +1,24 @@
 #ifndef _main_h_
 #define _main_h_
 
-/**
- * struct list_s - singly linked list
- * @str: string - (malloc'ed string)
- * @len: length of the string
- * @next: points to the next node
- *
- * Description: singly linked list node structure
- */
-typedef struct list_s
-{
-    char *str;
-    unsigned int len;
-    struct list_s *next;
-} list_t;
+/* -- Project 3 -- */
 
-/* -- Task 0 -- */
-size_t print_list(const list_t *h);
-/* -- Task 1 -- */
-size_t list_len(const list_t *h);
-/* -- Task 2 -- */
-list_t *add_node(list_t **head, const char *str);
-/* -- Task 3 -- */
-list_t *add_node_end(list_t **head, const char *str);
-/* -- Task 4 -- */
-void free_list(list_t *head);
+/* Task 0 */
+unsigned int binary_to_uint(const char *b);
+
+/* Task 1 */
+void print_binary(unsigned long int n);
+
+/* Task 2 */
+int get_bit(unsigned long int n, unsigned int index);
+
+/* Task 3 */
+int set_bit(unsigned long int *n, unsigned int index);
+
+/* Task 4 */
+int clear_bit(unsigned long int *n, unsigned int index);
+
+/* Task 5 */
+unsigned int flip_bits(unsigned long int n, unsigned long int m);
+
+#endif
