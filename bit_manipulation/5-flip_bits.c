@@ -16,7 +16,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 	aux = m ^ n;
 
 	for (; aux; iterator++)
-		aux = aux & (bed - 1);
+		aux = aux & (aux - 1);
 
 	return (iterator);
 }
