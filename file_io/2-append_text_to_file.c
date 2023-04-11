@@ -13,7 +13,7 @@
 
 int append_text_to_file(const char *filename, char *text_content)
 {
-	ssize_t fd, wr;
+	ssize_t fd;
 	int len_content = 0;
 
 	for (; text_content[len_content]; len_content++)
@@ -29,10 +29,7 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (!fd)
 		return (-1);
 
-	wr = write(fd, text_content, len_content);
-	if (!wr)
-		return (-1);
-
+	write(fd, text_content, len_content);
 	close(fd);
 	return (1);
 }
