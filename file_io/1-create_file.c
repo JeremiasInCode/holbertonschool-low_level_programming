@@ -16,7 +16,6 @@ int create_file(const char *filename, char *text_content)
 {
 	ssize_t fd, wr;
 	int len_content = strlen(text_content);
-	char *buffer = NULL;
 
 	if (!filename)
 		return (-1);
@@ -28,8 +27,7 @@ int create_file(const char *filename, char *text_content)
 	if (fd == -1)
 		return (-1);
 
-	buffer = malloc(sizeof(char *) * len_content);
-	wr = write(fd, buffer, len_content);
+	wr = write(fd, text_content, len_content);
 	if (wr == -1)
 		return (-1);
 	close(fd);
