@@ -18,22 +18,20 @@ int create_file(const char *filename, char *text_content)
 	int len_content = strlen(text_content);
 	char *buffer = NULL;
 
-	buffer = malloc(sizeof(char *) * len_content);
-
-	if (!filename || !buffer)
+	if (!filename)
 		return (-1);
 
-	if (!text_content)
+	if (text_content == NULL)
 		text_content = "";
 
-	fd = open(filename, O_CREAT | O_TRUNC, 0600);
-	if (!fd)
+	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	if (fd == -1)
 		return (-1);
 
+	buffer = malloc(sizeof(char *) * len_content);
 	wr = write(fd, buffer, len_content);
 	if (wr == -1)
 		return (-1);
-
 	close(fd);
 	return (1);
 }
