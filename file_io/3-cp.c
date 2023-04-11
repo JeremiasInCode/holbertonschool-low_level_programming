@@ -29,8 +29,7 @@ int main(int argc, char *argv[])
 	if (fs == -1)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 
-	rd = read(fd, buffer, FULL_SIZE);
-	while (rd)
+	while ((rd = read(fd, buffer, FULL_SIZE)))
 	{
 		if (rd == -1)
 		{
@@ -47,9 +46,9 @@ int main(int argc, char *argv[])
 		}
 	}
 	if (close(fd) == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd), exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %ld\n", fd), exit(100);
 	if (close(fs) == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fs), exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %ld\n", fs), exit(100);
 
 	return (0);
 }
