@@ -17,19 +17,21 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int htIndex = 0;
 	hash_node_t *htNode = NULL;
 
-	if (!key || !value)
+	if (!key || !value || !ht)
 		return (0);
 
 	htIndex = key_index((const unsigned char *) key, ht->size);
 	htNode = ht->array[htIndex];
 
+	/*If exists a node in the corresponding index with the same key*/
 	if (htNode && strcmp(htNode->key, key) == 0)
 	{
 		free(htNode->value);
 		htNode->value = strdup(value);
 		return (1);
 	}
-	else
+	/*Otherwise, I create a new node in that index.*/
+	else if (htNode == NULL && strcmp(htNode->key, key) != 0)
 	{
 		htNode = malloc(sizeof(hash_node_t));
 		if (!htNode)
@@ -39,6 +41,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		if (!htNode->key)
 			return (0);
 
+		/* Connect node */
 		htNode->value = strdup(value);
 		htNode->next = ht->array[htIndex];
 		ht->array[htIndex] = htNode;
