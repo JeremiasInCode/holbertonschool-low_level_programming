@@ -21,37 +21,25 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (!key || !value)
 		return (0);
 
-	/* -- Copy of new value - Request  -- */
 	newValue = strdup(value);
-	if (!newValue)
+	htIndex = key_index((const unsigned char *) key, ht->size);
+	if (!newValue || !htIndex)
 		return (0);
 
-	/* -- Index for save the value  -- */
-	htIndex = key_index((const unsigned char *)key, ht->size);
-	/* -- Node will have the array of hash table -- */
 	htNode = ht->array[htIndex];
 
-	if (!htNode)
-		return (0);
-	if (strcmp(htNode->key, key) == 0)
+	if (htNode && strcmp(htNode->key, key) == 0)
 	{
 		free(htNode->value);
-		htNode->value = newValue;
+		htNode->value = strdup(value);
 	}
-	else
-	{
-		htNode = malloc(sizeof(hash_node_t));
-		if (!htNode)
-			return (0);
+	htNode = malloc(sizeof(hash_node_t));
+	if (!htNode)
+		return (0);
+	htNode->key = strdup(key);
+	htNode->value = strdup(value);
+	htNode->next = ht->array[htIndex];
+	ht->array[htIndex] = htNode;
 
-		htNode->key = strdup(key);
-
-		if (!htNode->key)
-			return (0);
-
-		htNode->value = newValue;
-		htNode->next = ht->array[htIndex];
-		ht->array[htIndex] = htNode;
-	}
 	return (1);
 }
