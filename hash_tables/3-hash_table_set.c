@@ -17,16 +17,17 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int htIndex = 0;
 	hash_node_t *htNode = NULL;
 
-	htIndex = key_index((const unsigned char *) key, ht->size);
-	if (!key || !value || !htIndex)
+	if (!key || !value)
 		return (0);
 
+	htIndex = key_index((const unsigned char *) key, ht->size);
 	htNode = ht->array[htIndex];
 
 	if (htNode && strcmp(htNode->key, key) == 0)
 	{
 		free(htNode->value);
 		htNode->value = strdup(value);
+		return (1);
 	}
 	else
 	{
