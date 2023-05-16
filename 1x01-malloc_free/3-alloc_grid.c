@@ -26,10 +26,9 @@ int **alloc_grid(int width, int height)
 	for (i = 0; i < height; i++)
 	{
 		ptro[i] = (int *)malloc(sizeof(int) * width);
+
 		if (ptro[i] != NULL)
-		{
 			continue;
-		}
 		else
 		{
 			for  (; i >= 0; i--)
@@ -40,12 +39,11 @@ int **alloc_grid(int width, int height)
 			return (NULL);
 		}
 	}
+
 	for (x = 0; x < height; x++)
 	{
 		for (y = 0; y < width; y++)
-		{
 			ptro[x][y] = 0;
-		}
 	}
 	return (ptro);
 }

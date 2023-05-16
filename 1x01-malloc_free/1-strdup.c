@@ -12,27 +12,25 @@
 
 char *_strdup(char *str)
 {
-	int cantStr, i;
-	char *spaceArray = NULL;
+	unsigned int size_string = 0, i = 0;
+	char *buffer = NULL;
 
-	if (str != NULL)
+	if (str)
 	{
-		for (cantStr = 0; str[cantStr]; cantStr++)
-			;
-
-		/* +1 for character null (\0) */
-		spaceArray = (char *)malloc(sizeof(char) * cantStr + 1);
-
-		if (spaceArray == NULL)
+		for (size_string = 0; str[size_string]; size_string++)
+			continue;
+		
+		buffer = malloc(sizeof(char *) * size_string);
+		if (!buffer)
 			return (NULL);
-
-		for (i = 0; i < cantStr; i++)
-			spaceArray[i] = str[i];
-
-		return (spaceArray);
+		
+		for (; i < size_string; i++)
+			buffer[i] = str[i];
+		
+		return (buffer);
 	}
 	else
 	{
-		return (spaceArray);
+		return (buffer);
 	}
 }

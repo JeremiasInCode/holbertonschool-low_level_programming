@@ -13,40 +13,31 @@
 
 char *str_concat(char *s1, char *s2)
 {
-	int countS1, countS2, lenght = 0, iterator, SecondString = 0;
-	char *spaceDouble = NULL;
+	int size_S1 = 0, size_S2 = 0, total_space = 0, i = 0, second_i = 0;
+	char *buffer = NULL;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-
-	for (countS1 = 0; s1[countS1]; countS1++)
+	for (; s1[size_S1]; size_S1++)
 		;
-	for (countS2 = 0; s2[countS2]; countS2++)
+	
+	for (; s2[size_S2]; size_S2++)
 		;
 
-	lenght = countS1 + countS2;
-	spaceDouble = (char *)malloc((lenght) + 1);
+	total_space = (size_S1 + size_S2);
+	buffer = malloc(sizeof(char *) * total_space);
+	if (!buffer)
+		return (buffer);
 
-	if (spaceDouble != NULL)
+	for (; i < total_space; i++)
 	{
-		for (iterator = 0; iterator <= lenght; iterator++)
+		if (i < size_S1)
 		{
-			if (iterator < countS1)
-			{
-				spaceDouble[iterator] = s1[iterator];
-			}
-			else
-			{
-				spaceDouble[iterator] = s2[SecondString];
-				SecondString++;
-			}
+			buffer[i] = s1[i];
 		}
-		return (spaceDouble);
+		else if (i > size_S1)
+		{
+			buffer[i] = s1[second_i];
+			second_i++;
+		}
 	}
-	else
-	{
-		return (NULL);
-	}
+	return (buffer);
 }
