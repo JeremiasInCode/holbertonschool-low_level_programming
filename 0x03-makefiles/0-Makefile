@@ -1,0 +1,7 @@
+# This rule execute the script school
+all: main.c m.h
+		cc main.c school.c -o school
+
+clean:
+		rm -f school
+

@@ -1,0 +1,9 @@
+CC = gcc
+SRC = main.c school.c
+
+# This rule execute the script with variables"
+all: $(SRC) m.h
+		 $(CC) $(SRC) -o school
+
+clean:
+		rm -f school
